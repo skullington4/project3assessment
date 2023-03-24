@@ -2,4 +2,32 @@
 
 {% block content %}
 
+    <h1>Wish List Items</h1>
+    {% if wish_list %}
+
+    <table class="pure-table center">
+        <thead>
+          <tr><th>Description</th><th>Delete</th></tr>
+        </thead>
+        <tbody>
+          {% for item in wish_list %}
+            <tr>
+              <td>{{item.description}}</td>
+              <td>
+                <a href="{% url 'item_delete' item.id %}">X</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    
+    {% else %}
+        <h1>No items on list</h1>
+
+    {% endif %}
+
+    <hr>
+    <a class="pure-button" href="/add" >Add A Wish Item</a>
+
+
 {% endblock %}
